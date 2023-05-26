@@ -1,24 +1,27 @@
 import { ReturnSevice } from 'src/types/serviceTypes';
 import Product from '../database/models/product.model';
 
-type returnCadastrarProduto = ReturnSevice<{
+type ReturnCadastrarProduto = ReturnSevice<{
   id: number,
   name: string,
   price: string
 }>;
-
-const cadastrarProduto = async <returnCadastrarProduto>(
+// Requisito 1
+const cadastrarProduto = async (
   orderId: number,
   price: string,
   name: string,
-): Promise<returnCadastrarProduto> => {
+): Promise<ReturnCadastrarProduto> => {
   const produtoCriado = await Product.create({ name, price, orderId });
    
-  console.log(produtoCriado?.dataValues);
+  /* console.log(produtoCriado?.dataValues); */
   return {
-    id: produtoCriado?.dataValues.id,
-    name: produtoCriado?.dataValues.name,
-    price: produtoCriado?.dataValues.price,
+    type: 'CREATED',
+    data: {
+      id: produtoCriado?.dataValues.id,
+      name: produtoCriado?.dataValues.name,
+      price: produtoCriado?.dataValues.price,
+    },
   };
 };
 

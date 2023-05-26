@@ -4,11 +4,11 @@
     "colId": "history",
     "containerId": "",
     "name": "Cadastra Produtos",
-    "url": "https://localhost:3001/products",
+    "url": "localhost:3001/products",
     "method": "POST",
     "sortNum": 0,
     "created": "2023-05-25T20:10:12.590Z",
-    "modified": "2023-05-25T20:10:40.473Z",
+    "modified": "2023-05-26T18:34:55.131Z",
     "headers": [],
     "params": [],
     "body": {

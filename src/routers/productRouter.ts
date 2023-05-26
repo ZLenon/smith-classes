@@ -2,10 +2,10 @@ import express from 'express';
 
 import controllers from '../controllers/productController';
 
-const loginRouter = express.Router();
+const productRoute = express.Router();
 
 /* const middlewares = require('../middlewares'); */
 
-loginRouter.post('/', controllers.cadastrarProduto);// Requisito 1
+productRoute.post('/', controllers.cadastrarProduto);// Requisito 1
 
-export default loginRouter;
+export default productRoute;

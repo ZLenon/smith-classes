@@ -4,6 +4,6 @@ import productsRouter from './productRouter';
 
 const routers = express.Router();
 
-routers.use('/products', productsRouter);// Requisito 1
+routers.use('/products', productsRouter);
 
 export default routers;
