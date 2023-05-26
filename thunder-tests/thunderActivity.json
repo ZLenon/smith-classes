@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "f543ea82-db19-4fa2-8b37-228bda322b42",
+    "colId": "history",
+    "containerId": "",
+    "name": "Cadastra Produtos",
+    "url": "https://localhost:3001/products",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-25T20:10:12.590Z",
+    "modified": "2023-05-25T20:10:40.473Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo de Thor\",\n  \"price\": \"30 peças de ouro\",\n  \"orderId\": 4\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
