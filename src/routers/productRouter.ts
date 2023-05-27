@@ -6,6 +6,6 @@ const productRoute = express.Router();
 
 /* const middlewares = require('../middlewares'); */
 
-productRoute.post('/', controllers.cadastrarProduto);// Requisito 1
+productRoute.post('/', controllers.cadastrarProdutoControler);// Requisito 1
 
 export default productRoute;

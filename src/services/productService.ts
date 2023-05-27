@@ -7,13 +7,13 @@ type ReturnCadastrarProduto = ReturnSevice<{
   price: string
 }>;
 // Requisito 1
-const cadastrarProduto = async (
+const cadastrarProdutoService = async (
   orderId: number,
   price: string,
   name: string,
 ): Promise<ReturnCadastrarProduto> => {
   const produtoCriado = await Product.create({ name, price, orderId });
-   
+
   /* console.log(produtoCriado?.dataValues); */
   return {
     type: 'CREATED',
@@ -26,5 +26,5 @@ const cadastrarProduto = async (
 };
 
 export default {
-  cadastrarProduto,
+  cadastrarProdutoService,
 };
