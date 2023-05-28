@@ -1,12 +1,9 @@
+import { Allproducts, Cadastrar } from 'src/types/Product';
 import { ReturnSevice } from 'src/types/serviceTypes';
 import Product from '../database/models/product.model';
 
-type ReturnCadastrarProduto = ReturnSevice<{
-  id: number,
-  name: string,
-  price: string
-}>;
 // Requisito 1
+type ReturnCadastrarProduto = ReturnSevice<Cadastrar>;
 const cadastrarProdutoService = async (
   orderId: number,
   price: string,
@@ -25,6 +22,21 @@ const cadastrarProdutoService = async (
   };
 };
 
+// Requisito 2
+export type ReturnBuscaProduto = ReturnSevice<Allproducts[]>;
+const buscaTodosProdutosService = async (): Promise<ReturnBuscaProduto> => {
+  const todosProdutosData = await Product.findAll();
+  const todosProdutos = todosProdutosData.map((produto) => produto.dataValues);
+
+  /* console.log(todosProdutos); */
+
+  return {
+    type: 'OK',
+    data: todosProdutos,
+  };
+};
+
 export default {
   cadastrarProdutoService,
+  buscaTodosProdutosService,
 };

@@ -11,6 +11,16 @@ const cadastrarProdutoControler = async (
   return response.status(201).json(produtoCadastrado.data);
 };
 
+// Requisito 2
+const buscaTodosProdutosControler = async (
+  _request: Request,
+  response: Response,
+): Promise<Response> => {
+  const todosProdutos = await service.buscaTodosProdutosService();
+  return response.status(200).json(todosProdutos.data);
+};
+
 export default {
   cadastrarProdutoControler,
+  buscaTodosProdutosControler,
 };
