@@ -1,11 +1,11 @@
-import { Sequelize } from 'sequelize';
+import { Model, Sequelize } from 'sequelize';
 import ModelOrder from '../database/models/order.model';
-import ProductModel from '../database/models/product.model';
+import ModelProduct from '../database/models/product.model';
 import { Order } from '../types/Order';
 import { ReturnSevice } from '../types/serviceTypes';
 
 // Requisito 3
-type ReturnListaTodosPedidos = ReturnSevice<Order[]>;
+type ReturnListaTodosPedidos = ReturnSevice<Model<Order>[]>;
 const listaTodosPedidosControler = async (): Promise<ReturnListaTodosPedidos> => {
   const dataTodosPedidos = await ModelOrder.findAll({
     attributes: [
@@ -13,16 +13,15 @@ const listaTodosPedidosControler = async (): Promise<ReturnListaTodosPedidos> =>
       [Sequelize.literal('JSON_ARRAYAGG(`productIds`.`id`)'), 'productIds'],
     ],
     include: [{
-      model: ProductModel,
+      model: ModelProduct,
       attributes: [],
       as: 'productIds', 
     }],
     group: ['Order.id'],
     raw: true,
   });
-  console.log('INICIO!!', dataTodosPedidos, 'FIM!!!');
-  // Preciso que minha data receba a constante da linha 10 dataTodosPedidos
-  return { type: 'OK', data: [] };
+  /*  console.log('INICIO!!', dataTodosPedidos, 'FIM!!!'); */  
+  return { type: 'OK', data: dataTodosPedidos as Model<Order>[] };
 };
 
 export default {
