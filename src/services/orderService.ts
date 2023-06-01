@@ -7,6 +7,7 @@ import { ReturnSevice } from '../types/serviceTypes';
 // Requisito 3
 type ReturnListaTodosPedidos = ReturnSevice<Model<Order>[]>;
 const listaTodosPedidosControler = async (): Promise<ReturnListaTodosPedidos> => {
+  // Fiz com ajuda dos summers da manha
   const dataTodosPedidos = await ModelOrder.findAll({
     attributes: [
       'id', 'userId',
